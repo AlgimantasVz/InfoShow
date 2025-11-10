@@ -54,7 +54,7 @@ export const deleteEvent = async (req, res, next) => {
     try{
         const deletedEvent = await deleteEventService(req.params.id);
         if(!deletedEvent) return handleResponse(res, 404, "Event not found")
-        handleResponse(res, 200, "Event Deleted Succesfully", deletedEvent)
+        handleResponse(res, 204)
     }catch (err){
         next(err);
     }

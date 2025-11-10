@@ -8,10 +8,10 @@ import { validateEvent } from "../middlewares/inputValidator.js";
 
 const router = express.Router();
 
-router.post("/event", validateEvent, createEvent);
-router.get("/event", getAllEvents);
-router.get("/event/:id", getEventById);
-router.put("/event/:id", validateEvent, updateEvent);
-router.delete("/event/:id", deleteEvent);
+router.post("/", validateEvent, createEvent);
+router.get("/", getAllEvents);
+router.get("/:id", getEventById);
+router.put("/:id", validateEvent, updateEvent);
+router.delete("/:id", deleteEvent);
 
 export default router;
