@@ -15,3 +15,7 @@ router.put("/user/:id", validateUser, updateUser);
 router.delete("/user/:id", deleteUser);
 
 export default router;
+
+
+//pilnas hierarchinis risys event/user/comment!!!!!!!!!!!
+//204 no connent po delete!!!!!!!!

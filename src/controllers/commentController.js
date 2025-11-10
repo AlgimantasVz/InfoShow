@@ -54,7 +54,7 @@ export const deleteComment = async (req, res, next) => {
     try{
         const deletedComment = await deleteCommentService(req.params.id);
         if(!deletedComment) return handleResponse(res, 404, "Comment not found")
-        handleResponse(res, 200, "Comment Deleted Succesfully", deletedComment)
+        handleResponse(res, 204)
     }catch (err){
         next(err);
     }
