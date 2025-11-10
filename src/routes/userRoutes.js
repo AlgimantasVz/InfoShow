@@ -8,14 +8,10 @@ import { validateUser } from "../middlewares/inputValidator.js";
 
 const router = express.Router();
 
-router.post("/user", validateUser ,createUser);
-router.get("/user", getAllUsers);
-router.get("/user/:id", getUserById);
-router.put("/user/:id", validateUser, updateUser);
-router.delete("/user/:id", deleteUser);
+router.post("/", validateUser ,createUser);
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+router.put("/:id", validateUser, updateUser);
+router.delete("/:id", deleteUser);
 
 export default router;
-
-
-//pilnas hierarchinis risys event/user/comment!!!!!!!!!!!
-//204 no connent po delete!!!!!!!!
