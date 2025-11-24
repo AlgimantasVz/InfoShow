@@ -4,6 +4,8 @@ const userScheme = Joi.object({
     name: Joi.string().min(3).required(),
     userName: Joi.string().min(2).required(),
     email: Joi.string().email().required(),
+    password: Joi.string().required(),
+    role: Joi.string().valid("admin", "user", "manager").required(),
     discord: Joi.string().min(4).required()
 });
 

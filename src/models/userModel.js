@@ -10,13 +10,13 @@ export const getUsersByIdService = async (id) => {
     return result.rows[0];
 };
 
-export const createUserService = async (name, userName, email, discord) => {
-    const result = await pool.query("INSERT INTO users (name, userName, email, discord) VALUES ($1, $2, $3, $4) RETURNING *", [name, userName, email, discord]);
+export const createUserService = async (name, userName, email, password, role, discord) => {
+    const result = await pool.query("INSERT INTO users (name, userName, email, password, role, discord) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, userName, email, password, role, discord]);
     return result.rows[0];
 };
 
-export const updateUsersService = async (id, name, userName, email, discord) => {
-    const result = await pool.query("UPDATE users SET name=$1, userName=$2, email=$3, discord=$4 where id=$5 RETURNING *", [name, userName, email, discord, id]);
+export const updateUsersService = async (id, name, userName, email, password, role, discord) => {
+    const result = await pool.query("UPDATE users SET name=$1, userName=$2, email=$3, password=$4, role=$5, discord=$6 where id=$7 RETURNING *", [name, userName, email, password, role, discord, id]);
     return result.rows[0];
 };
 export const deleteUsersService = async (id) => {

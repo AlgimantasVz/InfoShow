@@ -21,9 +21,9 @@ app.use(express.json());
 app.use(cors());
 
 //Routes
-app.use("/api/event/:id/users", userRoutes);
-app.use("/api/event", eventsRoutes);
-app.use("/api/event/:id/users/:id/comments", commentRoutes)
+app.use("/api/users/:id/event", eventsRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/users/:id/event/:id/comments", commentRoutes)
 
 //Error handeling
 app.use(errorHandeling);

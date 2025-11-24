@@ -5,13 +5,17 @@ import { createComment,
     getCommentById, 
     updateComment } from "../controllers/commentController.js";
 import { validateComment } from "../middlewares/inputValidator.js";
+import { verifyToken, authorize } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/", validateComment, createComment);
 router.get("/", getAllComments);
 router.get("/:id", getCommentById);
-router.put("/:id", validateComment, updateComment);
-router.delete("/:id", deleteComment);
+
+router.post("/", verifyToken, validateComment, createComment);
+
+router.put("/:id", verifyToken, validateComment, updateComment);
+
+router.delete("/:id", verifyToken, deleteComment);
 
 export default router;
