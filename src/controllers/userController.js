@@ -11,9 +11,9 @@ const handleResponse = (res, status, message, data = null) => {
 };
 
 export const createUser = async (req, res, next) => {
-    const {name, userName, email, discord} = req.body;
+    const {name, userName, email, password, role, discord} = req.body;
     try{
-        const newUser = await createUserService(name, userName, email, discord);
+        const newUser = await createUserService(name, userName, email, password, role, discord);
         handleResponse(res, 201, "User Created Succesfully", newUser)
     }catch (err){
         next(err);
@@ -40,9 +40,9 @@ export const getUserById = async (req, res, next) => {
 };
 
 export const updateUser = async (req, res, next) => {
-    const {name, userName, email, discord} = req.body;
+    const {name, userName, email, password, role, discord} = req.body;
     try{
-        const updatedUser = await updateUsersService(req.params.id, name, userName, email, discord);
+        const updatedUser = await updateUsersService(req.params.id, name, userName, email, password, role, discord);
         if(!updatedUser) return handleResponse(res, 404, "User not found")
         handleResponse(res, 200, "User Updated Succesfully", updatedUser)
     }catch (err){
