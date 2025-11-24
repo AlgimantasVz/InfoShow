@@ -5,14 +5,18 @@ import { createUser,
     getUserById, 
     updateUser } from "../controllers/userController.js";
 import { validateUser } from "../middlewares/inputValidator.js";
-import { verifyToken } from "../middlewares/auth.js";
+import { verifyToken, authorize } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/", validateUser ,createUser);
-router.get("/", verifyToken, getAllUsers);
+router.post("/", validateUser, createUser);
+
+router.get("/", verifyToken, authorize("admin"), getAllUsers);
+
 router.get("/:id", verifyToken, getUserById);
+
 router.put("/:id", verifyToken, validateUser, updateUser);
-router.delete("/:id", verifyToken, deleteUser);
+
+router.delete("/:id", verifyToken, authorize("admin"), deleteUser);
 
 export default router;
